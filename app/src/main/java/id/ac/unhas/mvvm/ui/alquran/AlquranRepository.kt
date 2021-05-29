@@ -25,7 +25,7 @@ class AlquranRepository() {
 
             override fun onResponse(call: Call<DataAlquran>, response: Response<DataAlquran>) {
                 val dataAlquran= response.body()
-                mutableLiveData.value = dataAlquran
+                mutableLiveData.value = dataAlquran!!
 
             }
         })
