@@ -1,4 +1,4 @@
-package id.ac.unhas.mvvm.ui.provinsi
+package id.ac.unhas.mvvm.ui.alquran
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,12 +13,14 @@ class AlquranViewModel(
     val alquran:ArrayList<Quran>
         get() = _alquran
 
-    fun getProvinsisFromRepo(): MutableLiveData<ArrayList<Quran>> {
-        return repository.getProvinsiFromApi()
+    fun getQuranFromRepo(): MutableLiveData<ArrayList<Quran>> {
+        return repository.getQuranFromApi()
     }
 
     override fun onCleared() {
         super.onCleared()
         _alquran.clear()
     }
+
+
 }
