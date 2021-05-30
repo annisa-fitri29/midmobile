@@ -1,5 +1,6 @@
 package id.ac.unhas.mvvm.ui.alquran
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -39,6 +40,30 @@ class detailFragment : Fragment() {
                              "Surah-ke      : ${StaticData.nomor}\n\n"+
                              "Jumlah ayat : ${StaticData.ayat}"
 
+
+        shareIcon.setOnClickListener{
+            val nama = StaticData.nama
+            val arti = StaticData.arti
+            val urut = StaticData.urut
+            val asma = StaticData.asma
+            val ayat = StaticData.ayat
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(
+                    Intent.EXTRA_TEXT, "Udah baca Al-Quran belum? " +
+                        "yuk baca surah ${nama}, detailnya ada dibawah ya!\n\n"+
+                        "Surah ${nama}  ${asma}\n\n"+
+                        "Arti : ${arti}\n"+
+                        "Surah-ke : ${urut}\n"+
+                        "Jumlah ayat : ${ayat}\n"
+                )
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+
+        }
     }
 
 }
